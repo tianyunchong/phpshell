@@ -3,8 +3,12 @@
 basepath=$(cd `dirname $0`; pwd)
 fswatch /data/cap/ | while read file
 do
-php /data/cap/github/phpshell/localhost/listenFileModify.php $file
 if [ "${file##*.}"x = "php"x ];then
+	#判断下文件是否存在
+	if [ ! -f "${file}" ];then
+		echo "${file} 文件不存在";
+		continue;
+	fi
 	#备份目录, 如果不存在，递归建立下
 	bak_dir="/tmp/bak$(dirname ${file})"
 	if [ ! -d "${bak_dir}" ];then
