@@ -7,11 +7,16 @@ $checkDir = array(
     '/data/cap/www2017/gc.supsite.work',
     '/data/cap/www2017/gc.supsite.api',
     '/data/cap/www2017/gc.supsite.manage',
+    '/data/cap/www2017/gc.supsite.openapi',
+    '/data/cap/www2017/gc.supsite',
+    '/data/cap/www2017/gc.supsite.appmarket',
+    '/data/cap/www2017/gc.supsite.channel',
 );
 foreach ($checkDir as $v) {
     $composerLib   = $v . "/vendor/xz/composerLib";
     $composerConf  = $v . '/vendor/xz/conf';
     $composerMongo = $v . '/vendor/xz/mongomodel';
+    checkGitChange($v);
     checkGitChange($composerLib);
     checkGitChange($composerConf);
     checkGitChange($composerMongo);
